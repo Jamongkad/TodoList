@@ -13,11 +13,6 @@ import RealmSwift
 
 class MainController: UITabBarController, UITabBarControllerDelegate {
     
-    lazy var box: UIView = UIView()
-    lazy var otherBox: UIView = UIView()
-    lazy var ttvc:PendingTodosTableViewController = PendingTodosTableViewController()
-    
-
     override func viewDidLoad() {
         self.title = "Mathew Todo List"
         super.viewDidLoad()
@@ -51,6 +46,15 @@ class MainController: UITabBarController, UITabBarControllerDelegate {
             realm.add(todoThree, update: true)
             realm.add(todoFour, update: true)
         }
+        
+        let addBtn: UIBarButtonItem = UIBarButtonItem (barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(self.openTodoForm))
+        self.navigationItem.setRightBarButtonItem(addBtn, animated: false)
+    }
+    
+    func openTodoForm() {
+        let tfvc:TodoFormViewController = TodoFormViewController()
+        let nav:UINavigationController = UINavigationController(rootViewController:tfvc)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
