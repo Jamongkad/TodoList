@@ -17,14 +17,6 @@ class TodoTableViewController: UITableViewController {
     var todos:Results<Todo>?
     var realm:Realm?
     var state:Int?
-    /*
-    convenience init() {
-        self.init(nibName:nil, bundle:nil)
-        let predicate: NSPredicate = NSPredicate(format: "state = %i", 1)
-        realm = try! Realm()
-        todos = realm!.objects(Todo.self).filter(predicate)
-    }
-    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
