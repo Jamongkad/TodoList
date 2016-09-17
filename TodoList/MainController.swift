@@ -68,7 +68,7 @@ class MainController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        NSLog("Printed")
+        //NSLog("Printed")
     }
     
     override func didReceiveMemoryWarning() {

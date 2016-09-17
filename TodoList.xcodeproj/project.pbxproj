@@ -10,6 +10,8 @@
 		2AB07AD755BD7EBD4F6875DD /* Pods_TodoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB041F1C33234F95AC8A2B49 /* Pods_TodoListTests.framework */; };
 		AF3BC2891D8B88C900A2B8B3 /* PendingTodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BC2881D8B88C900A2B8B3 /* PendingTodosTableViewController.swift */; };
 		AF524D451D8C019700B15937 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF524D441D8C019700B15937 /* Todo.swift */; };
+		AF524D481D8CE86E00B15937 /* CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF524D471D8CE86E00B15937 /* CountDownHelper.swift */; };
+		AF524D4A1D8D03F600B15937 /* UIView+fadeIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF524D491D8D03F600B15937 /* UIView+fadeIn.swift */; };
 		AF5C6E3E1D8BA11100EC85C4 /* DoneTodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5C6E3D1D8BA11100EC85C4 /* DoneTodosTableViewController.swift */; };
 		AFA79DC71D8ABEA5008329EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA79DC61D8ABEA5008329EC /* AppDelegate.swift */; };
 		AFA79DC91D8ABEA5008329EC /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA79DC81D8ABEA5008329EC /* MainController.swift */; };
@@ -47,6 +49,8 @@
 		AF3BC2881D8B88C900A2B8B3 /* PendingTodosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTodosTableViewController.swift; sourceTree = "<group>"; };
 		AF524D3F1D8BF5C000B15937 /* TodoList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TodoList-Bridging-Header.h"; sourceTree = "<group>"; };
 		AF524D441D8C019700B15937 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		AF524D471D8CE86E00B15937 /* CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownHelper.swift; sourceTree = "<group>"; };
+		AF524D491D8D03F600B15937 /* UIView+fadeIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+fadeIn.swift"; sourceTree = "<group>"; };
 		AF5C6E3D1D8BA11100EC85C4 /* DoneTodosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTodosTableViewController.swift; sourceTree = "<group>"; };
 		AFA79DC31D8ABEA5008329EC /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA79DC61D8ABEA5008329EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,15 @@
 			name = RealmObjects;
 			sourceTree = "<group>";
 		};
+		AF524D461D8CE85500B15937 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AF524D471D8CE86E00B15937 /* CountDownHelper.swift */,
+				AF524D491D8D03F600B15937 /* UIView+fadeIn.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		AFA79DBA1D8ABEA5008329EC = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +157,7 @@
 				AF5C6E3D1D8BA11100EC85C4 /* DoneTodosTableViewController.swift */,
 				AFA79DC81D8ABEA5008329EC /* MainController.swift */,
 				AF3BC2881D8B88C900A2B8B3 /* PendingTodosTableViewController.swift */,
+				AF524D461D8CE85500B15937 /* Helpers */,
 				AF524D431D8C018200B15937 /* RealmObjects */,
 				AFA79DCD1D8ABEA5008329EC /* Assets.xcassets */,
 				AFA79DCF1D8ABEA5008329EC /* LaunchScreen.storyboard */,
@@ -461,8 +475,10 @@
 				AFA79DC91D8ABEA5008329EC /* MainController.swift in Sources */,
 				AFA79DC71D8ABEA5008329EC /* AppDelegate.swift in Sources */,
 				AF3BC2891D8B88C900A2B8B3 /* PendingTodosTableViewController.swift in Sources */,
+				AF524D481D8CE86E00B15937 /* CountDownHelper.swift in Sources */,
 				AF524D451D8C019700B15937 /* Todo.swift in Sources */,
 				AF5C6E3E1D8BA11100EC85C4 /* DoneTodosTableViewController.swift in Sources */,
+				AF524D4A1D8D03F600B15937 /* UIView+fadeIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

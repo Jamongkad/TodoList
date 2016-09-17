@@ -7,51 +7,56 @@
 //
 
 import UIKit
+import ChameleonFramework
+import SnapKit
+import RealmSwift
 
 class DoneTodosTableViewController: UITableViewController {
     
     let cellReuseIdentifier = "cell"
-    let cuties:[String] = ["Pod", "Irene", "RX-7", "Macbook Pro", "iPhone 7"]
+    var todos:Results<Todo>?
+    var realm:Realm?
+    
+    convenience init() {
+        self.init(nibName:nil, bundle:nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor.clearColor()
-        //self.tableView.separatorStyle = .None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        let predicate: NSPredicate = NSPredicate(format: "state = %i", 0)
+        realm = try! Realm()
+        todos = realm!.objects(Todo.self).filter(predicate)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cuties.count
+        return (todos?.count)!
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = cuties[indexPath.row]
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)!
+        cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellReuseIdentifier)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
+        let todo:Todo = todos![indexPath.row]
+        cell.textLabel?.text = todo.name
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("Selected %@", cuties[indexPath.row])
+        let myCell:UITableViewCell = (self.tableView?.cellForRowAtIndexPath(indexPath))!
+        let c: CountDownHelper = CountDownHelper(table:tableView, cell:myCell, todo:todos![indexPath.row], status:1)
+        c.initiateTimer()
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        /*
-        UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
-                                                                              title:@"Edit"
-                                                                            handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-            NSDictionary *ride = [rides objectAtIndex:indexPath.section];
-                                                                                
-            rbvc = [[RideBookingViewController alloc] init];
-            [rbvc setEditedCellPath:indexPath];
-            [rbvc setEditMode:YES];
-            [rbvc setRideData:ride];
-                                                                                
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rbvc];
-            [self presentViewController:nav animated:YES completion:nil];
-        }];
-        [editAction setBackgroundColor:[UIColor flatBlueColor]];
-        */
-        
         let deleteAction: UITableViewRowAction = UITableViewRowAction.init(style: .Normal, title:"Delete") { (UITableViewRowAction, NSIndexPath) in
             NSLog("Deleted")
         }
