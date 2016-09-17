@@ -14,6 +14,12 @@ import RealmSwift
 class TodoFormViewController: UIViewController, UITextFieldDelegate {
     
     var todoTextField:UITextField?
+    var realm:Realm? = nil
+    
+    convenience init() {
+        self.init(nibName:nil, bundle:nil)
+        realm = try! Realm()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,15 @@ class TodoFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     func insertTodo() {
-        print(todoTextField?.text)
+        
+        try! self.realm!.write {
+            let todo = Todo()
+            todo.name = (todoTextField?.text)!
+            todo.state = 1
+            todo.id = NSUUID().UUIDString
+            realm?.add(todo)
+        }
+        
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     

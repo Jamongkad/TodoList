@@ -21,23 +21,22 @@ class MainController: UITabBarController, UITabBarControllerDelegate {
         let todoOne = Todo()
         todoOne.name = "Todo 1"
         todoOne.state = 1
-        todoOne.id = 1
+        todoOne.id = NSUUID().UUIDString
         
         let todoTwo = Todo()
         todoTwo.name = "Todo 2"
         todoTwo.state = 0
-        todoTwo.id = 2
+        todoTwo.id = NSUUID().UUIDString
         
         let todoThree = Todo()
         todoThree.name = "Todo 3"
         todoThree.state = 1
-        todoThree.id = 3
+        todoThree.id = NSUUID().UUIDString
         
         let todoFour = Todo()
         todoFour.name = "Todo 4"
         todoFour.state = 1
-        todoFour.id = 4
-        
+        todoFour.id = NSUUID().UUIDString
         
         let realm = try! Realm()
         try! realm.write {
