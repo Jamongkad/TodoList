@@ -9,6 +9,9 @@ target 'TodoList' do
   pod 'SnapKit', '~> 0.22'
   pod 'ChameleonFramework/Swift'
   pod 'RealmSwift'
+  pod 'Alamofire', '~> 3.0'
+  pod 'SwiftyJSON'
+  pod 'LilithProgressHUD'
 
   target 'TodoListTests' do
     inherit! :search_paths

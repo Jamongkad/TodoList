@@ -53,15 +53,22 @@ class TodoFormViewController: UIViewController, UITextFieldDelegate {
     
     func insertTodo() {
         
-        try! self.realm!.write {
-            let todo = Todo()
-            todo.name = (todoTextField?.text)!
-            todo.state = 1
-            todo.id = NSUUID().UUIDString
-            realm?.add(todo)
+        if todoTextField?.text != "" {
+       
+            try! self.realm!.write {
+                let todo = Todo()
+                todo.name = (todoTextField?.text)!
+                todo.state = 1
+                todo.id = NSUUID().UUIDString
+                realm?.add(todo)
+            }
+ 
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let alert:UIAlertController = UIAlertController (title: "Whoops", message: "You must enter a todo!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        self.dismissViewControllerAnimated(true, completion:nil)
     }
     
     func cancel() {
