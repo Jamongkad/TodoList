@@ -36,7 +36,6 @@ class MainController: UITabBarController, UITabBarControllerDelegate {
             LilithProgressHUD.show()
             Alamofire.request(.GET, "https://dl.dropboxusercontent.com/u/6890301/tasks.json") .responseJSON { response in
                 if let jsonResponse = response.result.value {
-                    //print("JSON: \(jsonResponse)")
                     let json = JSON(jsonResponse)
 
                     for (key,subJson):(String, JSON) in json {
